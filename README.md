@@ -31,15 +31,15 @@ Setup Web Service
 
 
 Setup Environment For Linux:
-1.	Download “get-pip.py”
-2.	Type “Python get-pip.py” in command-line
-3.	Type “pip install virtualenv” in command-line
-4.	Go to project directory
-5.	Check if you install Python 2.7. If not Go to Setup Python2.7 For Linux step1
-6.	virturalenv venv (virturalenv –p /user/local/bin/python2.7 venv)
-7.	Source venv/bin/activate
-8.	Go to requirement.txt directory
-9.	Pip install –r requirement.txt
+ 1.	Download “get-pip.py”
+ 2.	Type “Python get-pip.py” in command-line
+ 3.	Type “pip install virtualenv” in command-line
+ 4.	Go to project directory
+ 5.	Check if you install Python 2.7. If not Go to Setup Python2.7 For Linux step1
+ 6.	virturalenv venv (virturalenv –p /user/local/bin/python2.7 venv)
+ 7.	Source venv/bin/activate
+ 8.	Go to requirement.txt directory
+ 9.	Pip install –r requirement.txt
 
 Setup Python2.7 For Linux:
 1.	Download Python package
