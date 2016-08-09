@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        <center class="no-print"><b>Southern University</b></center>
+        <center>Department of Computer Science</center>
+        <font size="3" >
+        <center>{{ program.programTitle}}</center>
+        <center>NAME:<u>{{ program.studentName}}</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADVISOR:<u contenteditable='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></center>
+        </font>
+
+        <div><br></div>
+        <div class="container">
+        <td colspan='6'><b>{{ prerequisiteSection.sectionTitle }}</b></td>
+        <br>
+        <center>
+        {% for course in prerequisiteSection.courses %}
+            {%if course.grade == '' %}
+                <input type="checkbox"> {{course.courseId}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% else %}
+                <input type="checkbox" checked> {{course.courseId}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% endif %}
+
+            {%if forloop.counter == 5 %}
+                <br>
+            {% endif %}
+            {%if forloop.counter == 10 %}
+                <br>
+            {% endif %}
+        {% endfor %}
+        </center>
+
+
+        <table class="table table-striped table-condensed table-bordered" >
+        <thead>
+            <tr>
+            <th>Course Number</th>
+            <th>Course Title</th>       
+            <th>Semester Completed</th>
+            <th>Grade</th>           
+            </tr>
+        </thead>
+            {% if program %}
+                {% for section in program.sections %}
+                    <thead contenteditable='true'>
+                            <td colspan='6'><b>{{ section.sectionTitle }}</b></td>
+                    </thead>
+
+                    {% for course in section.courses %}
+                            <tr contenteditable='true' >
+                                <td colspan='1'>{{course.courseId}}&nbsp;</td>
+                                <td>{{course.courseTitle}}</td>
+                                <td>{{course.semester}}&nbsp;{{course.year}}</td>
+                                <td>{{course.grade}}</td>
+                            </tr>
+                    {% endfor %}
+                {% endfor %}
+            {% else %}
+                <p>No Section</p>
+            {% endif %}
+
+
+            {% if selectedArea %}
+                    <thead contenteditable='true'>
+                            <td colspan='6'><b>{{ selectedArea.sectionTitle }}</b></td>
+                    </thead>
+
+                    {% for area in emphasisAreas %}
+                        <thead contenteditable='true'>
+                            <td colspan='6'>&nbsp;&nbsp;&nbsp;{{ area.emphasisAreaId }}.&nbsp;{{ area.emphasisAreaTitle }}</td>
+                        </thead>
+                    {% endfor %}
+
+                    {% for course in selectedArea.courses %}
+                            <tr contenteditable='true' >
+                                <td colspan='1'>{{course.courseId}}&nbsp;</td>
+                                <td>{{course.courseTitle}}</td>
+                                <td>{{course.semester}}&nbsp;{{course.year}}</td>
+                                <td>{{course.grade}}</td>
+                            </tr>
+                    {% endfor %}
+            {% endif %}
+
+            {% if electSectionT %}
+                    <thead contenteditable='true'>
+                            <td colspan='6'><b>{{ electSectionT.sectionTitle }}</b></td>
+                    </thead>
+
+                    {% for course in electSectionT.courses %}
+                            <tr contenteditable='true' >
+                                <td colspan='1'>{{course.courseId}}&nbsp;</td>
+                                <td>{{course.courseTitle}}</td>
+                                <td>{{course.semester}}&nbsp;{{course.year}}</td>
+                                <td>{{course.grade}}</td>
+                            </tr>
+                    {% endfor %}
+            {% endif %}
+
+
+            {% if restOfSections %}
+                {% for section in restOfSections%}
+                    <thead contenteditable='true'>
+                            <td colspan='6'><b>{{ section.sectionTitle }}</b></td>
+                    </thead>
+
+                    {% for course in section.courses %}
+                            <tr contenteditable='true' >
+                                <td colspan='1'>{{course.courseId}}&nbsp;</td>
+                                <td>{{course.courseTitle}}</td>
+                                <td>{{course.semester}}&nbsp;{{course.year}}</td>
+                                <td>{{course.grade}}</td>
+                            </tr>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+        </table>
+        </div>
+
+    <p class='container'>
+    Student's Signature:<u>{{ program.studentName}}</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Advisor's Signature:<u contenteditable='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+    <br>
+    Department Chair's Signature:<u contenteditable='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+
+    </p>
+        <div class="no-print"><br></div> 
+{% endblock %}

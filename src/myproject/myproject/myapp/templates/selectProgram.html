@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        <p><font size="4">Select a program:</font></p>
+        <!-- List of uploaded documents -->
+        {% if graduatePrograms %}
+        <p><font size="3">Graduate program</font></p>
+            <ul>
+                {% for program in graduatePrograms %}
+                    <li><a href="{{urlOfSelectEmphasis}}?programSelected={{ program.programTitle }}">{{ program.programTitle }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if underGraduatePrograms %}
+        <p><font size="3">Undergraduate program</font></p>
+            <ul>
+                {% for program in underGraduatePrograms %}
+                    <li><a href="{{urlOfSelectSection}}?programSelected={{ program.programTitle }}">{{ program.programTitle }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+{% endblock %}
+

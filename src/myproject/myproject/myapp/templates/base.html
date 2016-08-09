@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="all">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" media="all">
+<html>
+    <head>
+        <meta charset="utf-8">
+    <style type="text/css">
+        @media print{    
+            .no-print, .no-print *
+            {
+                display: none !important;
+            }
+        }
+
+        @media print{
+            table {
+                font-size: 7pt;
+            }
+            div.rowFlexbox {
+                font-size:7pt;
+                text-align: left;
+            }
+        } 
+        .table-condensed>thead>tr>th,
+        .table-condensed>tbody>tr>th,
+        .table-condensed>tfoot>tr>th, 
+        .table-condensed>thead>tr>td, 
+        .table-condensed>tbody>tr>td, 
+        .table-condensed>tfoot>tr>td{
+            padding: 2px;
+        }
+
+        .row {
+          display: table;
+        }
+
+        .col {
+          display: table-cell;
+          width: 50%; /* depends on the number of columns */
+          padding: 8px;
+        }
+
+        .rowFlexbox {
+          display: flex; /* equal height of the children */
+        }
+
+        .colFlexbox {
+          flex: 1; /* additionally, equal width */
+          padding: 10px;
+        }
+
+    </style>
+
+    </head>
+
+    <body>
+        <div class="container">
+        
+        <div class="no-print">
+            <div class="no-print">
+                <a href={%url "home" %}><img alt="Southern University Computer Science Dept." src="/media/CMPS_SUBR.png"></a>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+                {% block content %}
+                {% endblock %}
+        </div>
+    </body>
+</html>

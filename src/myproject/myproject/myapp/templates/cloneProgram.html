@@ -1,0 +1,73 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+        <script>
+            function validateForm() {
+                var x = document.forms["myForm"]["newTemplateName"].value;
+                if (x == null || x == "") {
+                    alert("New Program name must be filled out");
+                    return false;
+                }
+                request.GET["favorite_color"]
+            }
+        </script>
+
+        <script>
+            function validateSectionForm() {
+                var x = document.forms["mySectionForm"]["newSectionName"].value;
+                if (x == null || x == "") {
+                    alert("New Program name must be filled out");
+                    return false;
+                }
+            }
+        </script>
+
+        <p><font size="4">Clone A Program</font></p>
+
+        <form name="myForm" action="{{url}}?isProgramClone=True" method="post" onsubmit="return validateForm()">
+            {% csrf_token %}
+                {% if programs %}
+            <ul >
+                    {% for program in programs %}
+                        <input type="radio" name="programs" value={{program.id}}> {{program.programTitle}}<br>
+                    {% endfor %}
+                        <br>
+                        New Template Name:<br>
+                        <input type="text" name="newTemplateName">
+                        <br>          
+                {% else %}
+                        <p>No program</p>
+                {% endif %}
+
+                        <br>
+                        <input type="submit" value="Submit">   
+            </ul>
+
+        </form>
+
+<!--         <p><font size="4">Clone A Section</font></p>
+
+        <form name="mySectionForm" action="{{url}}?isProgramClone=False" method="post" onsubmit="return validateSectionForm()">
+            {% csrf_token %}
+                {% if sections %}
+            <ul >
+                    {% for section in sections %}
+                        <input type="radio" name="sections" value={{section.id}}> {{section.sectionTitle}}<br>
+                    {% endfor %}
+                        <br>
+                        New Section Name:<br>
+                        <input type="text" name="newSectionName">
+                        <br>          
+                {% else %}
+                        <p>No section</p>
+                {% endif %}
+
+                        <br>
+                        <input type="submit" value="Submit">   
+            </ul>
+
+        </form> -->
+
+{% endblock %}

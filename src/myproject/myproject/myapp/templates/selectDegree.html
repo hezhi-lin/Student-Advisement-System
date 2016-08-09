@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        {% if url %}
+            <p><font size="8">Select a Degree</font></p>
+            <li><a href="{{ url }}?degree=Undergraduate">Undergraduate</a></li>
+            <li><a href="{{ url }}?degree=Graduate">Graduate</a></li> 
+        {% endif %}
+
+{% endblock %}

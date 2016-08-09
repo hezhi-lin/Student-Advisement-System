@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <br>
+    <font size='4'>
+            <li><a href={% url 'uploadFile' %}> Upload File To Get Report</a></li>   
+            <li><a href={% url 'cloneProgram' %}> Clone Existing Program</a></li>
+            <li><a href={% url 'admin:login' %}> Edit Program</a></li> 
+    </font>
+
+{% endblock %}
+

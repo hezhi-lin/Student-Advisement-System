@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <font class="TextSize" size="3">
+            <font size="3" >
+            <center><b>Southern University</b></center>
+            <center>Department of Computer Science</center>
+            <center>{{ program.programTitle}}</center>
+            <center>NAME:<u>{{ program.studentName}}</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADVISOR:<u contenteditable='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></center>
+            </font>
+            <br>
+            <center>
+            <div class="row">
+                <div class="col">
+                   <table class="table table-striped table-condensed table-bordered" >
+                    <thead>
+                        <tr>
+                        <th>Course Title</th>
+                        <th>CS NO</th>       
+                        <th>HR</th>
+                        <th>GR</th>
+                        <th>SEM</th>
+                        <th>YR</th>                         
+                        </tr>
+                    </thead>
+                        {% if program %}
+                            {% for section in program.sections %}
+                                <thead contenteditable='true'>
+                                        <td colspan='6'><b>{{ section.sectionTitle }}</b></td>
+                                </thead>
+
+                                {% for course in section.courses %}
+                                        <tr contenteditable='true'>
+                                            <td colspan='1'>{{course.courseTitle}}&nbsp;</td>
+                                            <td>{{course.courseId}}</td>
+                                            <td>{{course.creditHour}}</td>
+                                            <td>{{course.grade}}</td>
+                                            <td>{{course.semester}}</td>
+                                            <td>{{course.year}}</td>
+                                        </tr>
+                                {% endfor %}
+                            {% endfor %}
+                        {% else %}
+                            <p>No Section</p>
+                        {% endif %}
+                    </table>
+
+                </div>
+                <div class="col">
+                   <table class="table table-striped table-condensed table-bordered" >
+                    <thead>
+                        <tr>
+                        <th>Course Title</th>
+                        <th>CS NO</th>       
+                        <th>HR</th>
+                        <th>GR</th>
+                        <th>SEM</th>
+                        <th>YR</th>                         
+                        </tr>
+                    </thead>
+                        {% if restOfSections %}
+                            {% for section in restOfSections %}
+                                <thead contenteditable='true'>
+                                        <td colspan='6'><b>{{ section.sectionTitle }}</b></td>
+                                </thead>
+
+                                {% for course in section.courses %}
+                                        <tr contenteditable='true'>
+                                            <td colspan='1'>{{course.courseTitle}}&nbsp;</td>
+                                            <td>{{course.courseId}}</td>
+                                            <td>{{course.creditHour}}</td>
+                                            <td>{{course.grade}}</td>
+                                            <td>{{course.semester}}</td>
+                                            <td>{{course.year}}</td>
+                                        </tr>
+                                {% endfor %}
+                            {% endfor %}
+                        {% else %}
+                            <p>No Section</p>
+                        {% endif %}
+                    </table>                
+                </div>
+            </div>   
+
+            <div class="rowFlexbox">
+                <div class="colFlexbox" style="text-align: left; ">
+                    Approved:<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+                    Date:<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+                    <br>
+                    Chair, Computer Science
+                </div>
+                <div class="colFlexbox" style="text-align: left;  ">
+                    Approved:<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+                    Date:<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+                    <br>
+                    Dean, College of Engineering &amp; Computer Science
+                </div>
+            </div>  
+            </center>
+    </font>
+
+{% endblock %}
+

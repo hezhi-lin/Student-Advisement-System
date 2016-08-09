@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        <p><font size="4">Select a Emphasis</font></p>
+
+        <form action="{{url}}" method="post">
+            {% csrf_token %}
+            {% if emphasisAreas %}
+                <ul>
+            {% for emphasisArea in emphasisAreas %}
+                <input type="radio" name="emphasisAreas" value={{emphasisArea.id}}> {{emphasisArea.emphasisAreaId}} &nbsp;&nbsp;{{emphasisArea.emphasisAreaTitle}}<br>
+            {% endfor %}
+                </ul>
+            {% endif %}
+
+
+          <input type="submit" value="Submit">
+        </form>
+
+{% endblock %}
